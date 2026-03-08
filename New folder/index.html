@@ -20,20 +20,20 @@
       font-family: 'Space Grotesk', sans-serif;
     }
     
-    .gradient-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
-    }
-    
+    /* VIBRANT GOLDEN TEXT EFFECT FIXED */
     .gradient-text {
-      background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbbf24 100%);
+      background: linear-gradient(135deg, #FFD700 0%, #f97316 50%, #FFD700 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: shine 4s linear infinite;
     }
-    
-    .card-gradient {
-      background: linear-gradient(145deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
-      backdrop-filter: blur(10px);
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
     }
     
     .glow-orange {
@@ -46,503 +46,474 @@
     
     .grid-pattern {
       background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(2deg); }
-    }
-    
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
-    
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    .pulse-animation {
-      animation: pulse-glow 3s ease-in-out infinite;
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
     
     .price-popular {
       background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
     }
     
-    @keyframes rocket-fly {
-      0% { transform: translateY(0) rotate(-45deg); }
-      50% { transform: translateY(-10px) rotate(-45deg); }
-      100% { transform: translateY(0) rotate(-45deg); }
-    }
-    
-    .rocket-animation {
-      animation: rocket-fly 2s ease-in-out infinite;
-    }
-    
-    @keyframes graph-draw {
-      0% {
-        stroke-dashoffset: 2000;
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      100% {
-        stroke-dashoffset: 0;
-        opacity: 0.6;
-      }
-    }
-    
-    @keyframes dot-appear {
-      0%, 80% {
-        opacity: 0;
-        transform: scale(0);
-      }
-      90% {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    
-    .graph-line {
-      stroke-dasharray: 2000;
-      stroke-dashoffset: 2000;
-      animation: graph-draw 8s ease-in-out infinite;
-    }
-    
-    .graph-dot {
-      animation: dot-appear 8s ease-in-out infinite;
+    .text-shadow-glow {
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.6);
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body class="h-full gradient-bg text-white overflow-auto">
-  <div class="w-full h-full grid-pattern"><!-- Navigation -->
-   <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-blue-500/20">
+ <body class="h-full bg-black text-white overflow-auto">
+  <div class="w-full h-full grid-pattern">
+   
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-orange-500/20">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
      <div class="flex items-center justify-between h-20">
       <div class="flex items-center gap-3">
-       <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center">
-        <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39C21.61 2.39 16.66 .269 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.79 17.45 10.61 17.63 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.14 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
+       <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/20">
+        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39C21.61 2.39 16.66 .269 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.79 17.45 10.61 17.63 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.14 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
         </svg>
        </div><span class="text-2xl font-bold text-white">Skyrocket<span class="gradient-text">Growth</span></span>
       </div>
-      <div class="hidden md:flex items-center gap-8"><a href="#services" class="text-slate-300 hover:text-orange-400 transition-colors font-medium">Services</a> <a href="#pricing" class="text-slate-300 hover:text-orange-400 transition-colors font-medium">Pricing</a> <a href="#work" class="text-slate-300 hover:text-orange-400 transition-colors font-medium">Our Work</a> <a href="#contact" class="bg-gradient-to-r from-orange-500 to-yellow-500 px-6 py-3 rounded-full text-white font-semibold hover:opacity-90 transition-opacity">Get Started</a>
-      </div><button id="mobile-menu-toggle" class="md:hidden text-white">
-       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-       </svg></button>
-     </div>
-    </div><!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-blue-500/20">
-     <div class="px-6 py-6 space-y-4"><a href="#services" class="block text-slate-300 hover:text-orange-400 transition-colors font-medium py-2">Services</a> <a href="#pricing" class="block text-slate-300 hover:text-orange-400 transition-colors font-medium py-2">Pricing</a> <a href="#work" class="block text-slate-300 hover:text-orange-400 transition-colors font-medium py-2">Our Work</a> <a href="#contact" class="block bg-gradient-to-r from-orange-500 to-yellow-500 px-6 py-3 rounded-full text-white font-semibold text-center">Get Started</a>
-     </div>
-    </div>
-   </nav><!-- Hero Section -->
-   <section class="relative pt-24 pb-16 sm:pt-32 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"><!-- Animated Background Elements -->
-    <div class="absolute top-20 sm:top-40 -left-20 sm:left-10 w-48 sm:w-96 h-48 sm:h-96 bg-orange-500/20 rounded-full blur-3xl pulse-animation"></div>
-    <div class="absolute -bottom-10 sm:bottom-20 -right-20 sm:right-10 w-48 sm:w-80 h-48 sm:h-80 bg-blue-500/20 rounded-full blur-3xl pulse-animation" style="animation-delay: 1.5s;"></div><!-- Growth Graph Animation -->
-    <div class="absolute right-2 sm:right-10 top-1/4 hidden lg:block pointer-events-none">
-     <svg class="w-48 sm:w-64 h-36 sm:h-48" viewbox="0 0 200 150"><polyline class="graph-line" points="10,140 40,120 70,90 100,70 130,40 160,10 190,5" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /> <circle class="graph-dot" cx="10" cy="140" r="5" fill="#fb923c" /> <circle class="graph-dot" cx="40" cy="120" r="5" fill="#fb923c" style="animation-delay: 0.2s" /> <circle class="graph-dot" cx="70" cy="90" r="5" fill="#fb923c" style="animation-delay: 0.4s" /> <circle class="graph-dot" cx="100" cy="70" r="5" fill="#fb923c" style="animation-delay: 0.6s" /> <circle class="graph-dot" cx="130" cy="40" r="5" fill="#fbbf24" style="animation-delay: 0.8s" /> <circle class="graph-dot" cx="160" cy="10" r="6" fill="#fbbf24" style="animation-delay: 1s" /> <circle class="graph-dot" cx="190" cy="5" r="7" fill="#fbbf24" style="animation-delay: 1.2s" />
-     </svg>
-    </div>
-    <div class="max-w-6xl mx-auto text-center relative z-10">
-     <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 rounded-full px-5 py-2 mb-8"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> <span class="text-orange-300 font-medium">🚀 Trusted by 500+ Indian Businesses</span>
-     </div>
-     <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-6 leading-tight">Build Your Dream<br><span class="gradient-text">Website Today</span></h1>
-     <p id="hero-subtitle" class="text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-10 max-w-3xl mx-auto leading-relaxed px-2">Professional websites that drive real results. From stunning designs to powerful e-commerce solutions - we deliver excellence at prices Indian businesses can afford.</p>
-     <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16"><a href="#pricing" id="hero-cta" class="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-yellow-500 px-8 py-4 rounded-full text-white text-lg font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 glow-orange"> <span>Get Started Now</span>
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-       </svg></a> <a href="#work" class="w-full sm:w-auto border-2 border-orange-500/50 hover:border-orange-400 px-8 py-4 rounded-full text-white text-lg font-semibold transition-all flex items-center justify-center gap-2">
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-       </svg> View Portfolio </a>
-     </div><!-- Stats -->
-     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8 max-w-4xl mx-auto px-2">
-      <div class="card-gradient rounded-2xl p-4 sm:p-6 border border-blue-500/20">
-       <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">
-        500+
-       </div>
-       <div class="text-slate-400 text-xs sm:text-sm">
-        Projects Delivered
-       </div>
+      <div class="hidden md:flex items-center gap-8">
+       <a href="#services" class="text-slate-300 hover:text-orange-400 transition-colors font-medium">Services</a> 
+       <a href="#pricing" class="text-slate-300 hover:text-orange-400 transition-colors font-medium">Pricing</a> 
+       <a href="#work" class="text-slate-300 hover:text-orange-400 transition-colors font-medium">Our Work</a> 
+       <a href="#contact" class="bg-gradient-to-r from-orange-500 to-yellow-500 px-6 py-3 rounded-full text-white font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-orange-500/20">Get Started</a>
       </div>
-      <div class="card-gradient rounded-2xl p-4 sm:p-6 border border-blue-500/20">
-       <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">
-        98%
-       </div>
-       <div class="text-slate-400 text-xs sm:text-sm">
-        Client Satisfaction
-       </div>
-      </div>
-      <div class="card-gradient rounded-2xl p-4 sm:p-6 border border-blue-500/20">
-       <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">
-        7 Days
-       </div>
-       <div class="text-slate-400 text-xs sm:text-sm">
-        Average Delivery
-       </div>
-      </div>
-      <div class="card-gradient rounded-2xl p-4 sm:p-6 border border-blue-500/20">
-       <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">
-        24/7
-       </div>
-       <div class="text-slate-400 text-xs sm:text-sm">
-        Support Available
-       </div>
-      </div>
+      <button id="mobile-menu-toggle" class="md:hidden text-white">
+       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg>
+      </button>
      </div>
     </div>
-   </section><!-- Services Section -->
-   <section id="services" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-12 sm:mb-16"><span class="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white text-xs sm:text-sm font-semibold mb-4">What We Offer</span>
-      <h2 id="services-heading" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Complete Digital<br><span class="gradient-text">Solutions</span></h2>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-black/95 backdrop-blur-xl border-t border-blue-500/20">
+     <div class="px-6 py-6 space-y-4">
+      <a href="#services" class="block text-slate-300 hover:text-orange-400 transition-colors font-medium py-2">Services</a> 
+      <a href="#pricing" class="block text-slate-300 hover:text-orange-400 transition-colors font-medium py-2">Pricing</a> 
+      <a href="#work" class="block text-slate-300 hover:text-orange-400 transition-colors font-medium py-2">Our Work</a> 
+      <a href="#contact" class="block bg-gradient-to-r from-orange-500 to-yellow-500 px-6 py-3 rounded-full text-white font-semibold text-center mt-4">Get Started</a>
+     </div>
+    </div>
+   </nav>
+   
+   <section class="relative pt-24 pb-16 sm:pt-32 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center justify-center">
+    
+    <div class="absolute inset-0 z-0 pointer-events-none bg-black">
+      <svg class="w-full h-full object-cover opacity-90" viewBox="0 0 1440 800" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+       <defs>
+        <radialGradient id="giant-sun" cx="50%" cy="50%" r="50%">
+         <stop offset="0%" stop-color="#fbbf24" stop-opacity="1" />
+         <stop offset="40%" stop-color="#f97316" stop-opacity="0.9" />
+         <stop offset="80%" stop-color="#9a3412" stop-opacity="0.4" />
+         <stop offset="100%" stop-color="#431407" stop-opacity="0" />
+        </radialGradient>
+        
+        <linearGradient id="road-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+         <stop offset="0%" stop-color="#ea580c" stop-opacity="0.95" />
+         <stop offset="40%" stop-color="#f59e0b" stop-opacity="0.85" />
+         <stop offset="100%" stop-color="#fef08a" stop-opacity="1" />
+        </linearGradient>
+
+        <filter id="extreme-glow" x="-50%" y="-50%" width="200%" height="200%">
+         <feGaussianBlur stdDeviation="30" result="blur" />
+         <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+         <feGaussianBlur stdDeviation="8" result="blur" />
+         <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+       </defs>
+
+       <g fill="#ffffff" opacity="0.6">
+        <circle cx="150" cy="120" r="1.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" /></circle>
+        <circle cx="350" cy="280" r="2.5"><animate attributeName="opacity" values="0.1;0.8;0.1" dur="4s" repeatCount="indefinite" /></circle>
+        <circle cx="850" cy="150" r="1.5"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite" /></circle>
+        <circle cx="600" cy="80" r="2"><animate attributeName="opacity" values="0.2;0.9;0.2" dur="3.5s" repeatCount="indefinite" /></circle>
+        <circle cx="200" cy="500" r="1.5"><animate attributeName="opacity" values="0.1;1;0.1" dur="2s" repeatCount="indefinite" /></circle>
+        <circle cx="1200" cy="100" r="2"><animate attributeName="opacity" values="0;1;0" dur="5s" repeatCount="indefinite" /></circle>
+       </g>
+
+       <g stroke="#ea580c" stroke-linecap="round" opacity="0.5" filter="url(#soft-glow)">
+        <line x1="-200" y1="180" x2="100" y2="180" stroke-width="2">
+         <animate attributeName="x1" values="-200;1600" dur="7s" repeatCount="indefinite"/>
+         <animate attributeName="x2" values="100;1900" dur="7s" repeatCount="indefinite"/>
+        </line>
+        <line x1="-100" y1="350" x2="50" y2="350" stroke-width="1">
+         <animate attributeName="x1" values="-100;1500" dur="5s" repeatCount="indefinite"/>
+         <animate attributeName="x2" values="50;1650" dur="5s" repeatCount="indefinite"/>
+        </line>
+        <line x1="-300" y1="100" x2="-150" y2="100" stroke-width="1.5">
+         <animate attributeName="x1" values="-300;1400" dur="9s" repeatCount="indefinite"/>
+         <animate attributeName="x2" values="-150;1550" dur="9s" repeatCount="indefinite"/>
+        </line>
+       </g>
+
+       <circle cx="1100" cy="300" r="300" fill="url(#giant-sun)" filter="url(#extreme-glow)" />
+
+       <polygon points="1000,450 1440,250 1440,800 800,800" fill="#000000" />
+       
+       <polygon points="-300,900 300,900 1020,440 980,430" fill="url(#road-grad)" filter="url(#soft-glow)" opacity="0.9" />
+       
+       <polygon points="-300,900 300,900 1020,440 980,430" fill="none" stroke="#ffffff" stroke-width="6" filter="url(#soft-glow)" opacity="0.9" />
+
+       <line x1="0" y1="900" x2="1000" y2="435" stroke="#ffffff" stroke-width="6" stroke-dasharray="40, 30" opacity="0.9" filter="url(#soft-glow)">
+        <animate attributeName="stroke-dashoffset" values="140;0" dur="0.4s" repeatCount="indefinite" />
+       </line>
+
+       <g stroke="#ffffff" stroke-width="3" opacity="0.4" filter="url(#soft-glow)">
+         <line x1="-120" y1="760" x2="420" y2="760" />
+         <line x1="120" y1="630" x2="570" y2="630" />
+         <line x1="380" y1="530" x2="720" y2="530" />
+         <line x1="620" y1="465" x2="870" y2="465" />
+       </g>
+
+       <g filter="url(#soft-glow)">
+        <animateMotion dur="4.5s" repeatCount="indefinite" path="M -100 950 L 1000 435 Q 1100 250 1300 -50" rotate="auto" />
+        
+        <g>
+          <animateTransform attributeName="transform" type="scale" values="3; 0.6; 0.15" keyTimes="0; 0.7; 1" dur="4.5s" repeatCount="indefinite" />
+          
+          <g opacity="0.9">
+           <circle cx="-25" cy="0" r="10" fill="#ffffff"><animate attributeName="r" values="10;4;10" dur="0.2s" repeatCount="indefinite"/></circle>
+           <circle cx="-40" cy="6" r="14" fill="#fde047"><animate attributeName="r" values="14;6;14" dur="0.3s" repeatCount="indefinite"/></circle>
+           <circle cx="-45" cy="-5" r="16" fill="#fbbf24"><animate attributeName="r" values="16;7;16" dur="0.25s" repeatCount="indefinite"/></circle>
+           <circle cx="-65" cy="2" r="20" fill="#f97316"><animate attributeName="r" values="20;8;20" dur="0.4s" repeatCount="indefinite"/></circle>
+           <circle cx="-85" cy="-2" r="15" fill="#ea580c"><animate attributeName="opacity" values="1;0;1" dur="0.5s" repeatCount="indefinite"/></circle>
+          </g>
+
+          <path d="M 30 0 C 15 -12 -15 -12 -25 -6 L -25 6 C -15 12 15 12 30 0 Z" fill="#000000" stroke="#ffffff" stroke-width="2" vector-effect="non-scaling-stroke"/>
+          <path d="M -15 -6 L -30 -18 L -20 -6 Z" fill="#000000" stroke="#ffffff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+          <path d="M -15 6 L -30 18 L -20 6 Z" fill="#000000" stroke="#ffffff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+          <circle cx="5" cy="0" r="4" fill="#fbbf24" />
+        </g>
+       </g>
+      </svg>
+    </div>
+    <div class="max-w-6xl mx-auto text-center relative z-10 w-full">
+     <div class="inline-flex items-center gap-2 bg-black/60 border border-orange-500/50 rounded-full px-5 py-2 mb-8 backdrop-blur-md shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_10px_#4ade80]"></span> 
+        <span class="text-orange-300 font-semibold tracking-wide">Trusted by 500+ Indian Businesses</span>
+     </div>
+     
+     <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-extrabold mb-6 sm:mb-8 leading-tight text-shadow-glow">Build Your Dream<br><span class="hover:text-orange-400 transition-colors">Website Today</span></h1>
+     
+     <p id="hero-subtitle" class="text-base sm:text-lg md:text-xl text-white font-medium mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4 text-shadow-glow">Professional websites that drive real results. From stunning designs to powerful e-commerce solutions - we deliver excellence at prices Indian businesses can afford.</p>
+     
+     <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-10">
+        <a href="#pricing" id="hero-cta" class="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-yellow-500 px-8 py-4 rounded-full text-white text-lg font-bold hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(249,115,22,0.5)]"> 
+          <span>Get Started Now</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        </a> 
+        <a href="#work" class="w-full sm:w-auto border-2 border-white/50 bg-black/50 backdrop-blur-md hover:bg-white/10 hover:border-white px-8 py-4 rounded-full text-white text-lg font-semibold transition-all flex items-center justify-center gap-2">
+          <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg> 
+          View Portfolio 
+        </a>
+     </div>
+     
+     <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 max-w-4xl mx-auto shadow-2xl">
+         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2">
+          <div class="text-center">
+           <div class="text-3xl sm:text-4xl font-bold text-orange-400 mb-2 drop-shadow-md">500+</div>
+           <div class="text-slate-300 text-xs sm:text-sm font-semibold uppercase tracking-wider">Projects Delivered</div>
+          </div>
+          <div class="text-center">
+           <div class="text-3xl sm:text-4xl font-bold text-orange-400 mb-2 drop-shadow-md">98%</div>
+           <div class="text-slate-300 text-xs sm:text-sm font-semibold uppercase tracking-wider">Client Satisfaction</div>
+          </div>
+          <div class="text-center">
+           <div class="text-3xl sm:text-4xl font-bold text-orange-400 mb-2 drop-shadow-md">7 Days</div>
+           <div class="text-slate-300 text-xs sm:text-sm font-semibold uppercase tracking-wider">Average Delivery</div>
+          </div>
+          <div class="text-center">
+           <div class="text-3xl sm:text-4xl font-bold text-orange-400 mb-2 drop-shadow-md">24/7</div>
+           <div class="text-slate-300 text-xs sm:text-sm font-semibold uppercase tracking-wider">Support Available</div>
+          </div>
+         </div>
+     </div>
+
+    </div>
+   </section>
+   
+   <section id="services" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative border-t border-white/5 bg-black backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto relative z-10">
+     <div class="text-center mb-12 sm:mb-16">
+      <span class="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white text-xs sm:text-sm font-bold uppercase tracking-widest mb-4 shadow-lg shadow-orange-500/20">What We Offer</span>
+      <h2 id="services-heading" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Complete Digital<br><span class="gradient-text">Solutions</span></h2>
       <p class="text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">Everything you need to establish and grow your online presence</p>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"><!-- Service 1 -->
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20 hover:border-orange-500/50 transition-all duration-300 hover:scale-105">
-       <div class="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
-        <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-orange-500/20 hover:border-orange-500/60 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/50">
+       <div class="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg shadow-orange-500/30">
+        <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
        </div>
        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Website Design</h3>
        <p class="text-slate-400 mb-6 text-sm sm:text-base">Modern, responsive websites that captivate your audience on every device</p>
        <ul class="space-y-3">
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Custom Design</span></li>
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Mobile Optimized</span></li>
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Lightning Fast</span></li>
        </ul>
-      </div><!-- Service 2 -->
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20 hover:border-orange-500/50 transition-all duration-300 hover:scale-105">
-       <div class="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
-        <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+      </div>
+      
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-orange-500/20 hover:border-orange-500/60 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/50">
+       <div class="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg shadow-orange-500/30">
+        <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
        </div>
        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">E-Commerce</h3>
        <p class="text-slate-400 mb-6 text-sm sm:text-base">Complete online stores with secure payments and inventory management</p>
        <ul class="space-y-3">
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Payment Gateway</span></li>
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Order Management</span></li>
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Inventory System</span></li>
        </ul>
-      </div><!-- Service 3 -->
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20 hover:border-orange-500/50 transition-all duration-300 hover:scale-105">
-       <div class="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
-        <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </div>
+      
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-orange-500/20 hover:border-orange-500/60 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/50">
+       <div class="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg shadow-orange-500/30">
+        <svg class="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
        </div>
        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">SEO &amp; Marketing</h3>
        <p class="text-slate-400 mb-6 text-sm sm:text-base">Get found on Google and attract more customers organically</p>
        <ul class="space-y-3">
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>SEO Optimization</span></li>
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Google Analytics</span></li>
-        <li class="flex items-center gap-3 text-slate-300 text-sm sm:text-base">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
+        <li class="flex items-center gap-3 text-slate-200 font-medium text-sm sm:text-base">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
          </svg><span>Social Media Setup</span></li>
        </ul>
       </div>
      </div>
     </div>
-   </section><!-- Pricing Section -->
-   <section id="pricing" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative">
+   </section>
+   
+   <section id="pricing" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative border-t border-white/5 bg-black">
     <div class="absolute inset-0 opacity-50">
      <div class="absolute top-20 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
-     <div class="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
     </div>
     <div class="max-w-7xl mx-auto relative z-10">
-     <div class="text-center mb-12 sm:mb-16"><span class="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white text-xs sm:text-sm font-semibold mb-4">Transparent Pricing</span>
-      <h2 id="pricing-heading" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Choose Your<br><span class="gradient-text">Perfect Plan</span></h2>
+     <div class="text-center mb-12 sm:mb-16">
+      <span class="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white text-xs sm:text-sm font-bold uppercase tracking-widest mb-4">Transparent Pricing</span>
+      <h2 id="pricing-heading" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Choose Your<br><span class="gradient-text">Perfect Plan</span></h2>
       <p class="text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">Affordable packages designed for Indian businesses. All prices in INR.</p>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto"><!-- Starter -->
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20 hover:border-orange-500/50 transition-all duration-300">
+     
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+      
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-lg">
        <div class="text-center mb-8">
         <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Starter</h3>
         <p class="text-slate-400 mb-6 text-sm">Perfect for small businesses</p>
         <div class="flex items-baseline justify-center gap-2"><span class="text-4xl sm:text-5xl font-extrabold text-white">₹3,999</span>
         </div>
-        <p class="text-orange-400 text-xs sm:text-sm mt-2">One-time payment</p>
+        <p class="text-orange-400 text-xs sm:text-sm font-semibold mt-2">One-time payment</p>
        </div>
-       <ul class="space-y-3 mb-8 text-sm">
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> 5 Pages Website</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Mobile Responsive</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Contact Form</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Basic SEO</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> SSL Certificate</li>
-       </ul><button class="pricing-btn w-full py-3 sm:py-4 border-2 border-orange-500/50 hover:border-orange-400 rounded-full text-white font-semibold transition-all text-sm sm:text-base" data-plan="Starter" data-price="₹3,999">Choose Starter</button>
-      </div><!-- Business (Popular) -->
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border-2 border-orange-500 relative transform sm:scale-105 glow-orange">
-       <div class="absolute -top-4 sm:-top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-500 to-yellow-500 px-4 sm:px-6 py-1 sm:py-2 rounded-full text-white text-xs sm:text-sm font-bold whitespace-nowrap">
+       <ul class="space-y-4 mb-8 text-sm font-medium">
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> 5 Pages Website</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Mobile Responsive</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Contact Form</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Basic SEO</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> SSL Certificate</li>
+       </ul>
+       <button class="pricing-btn w-full py-4 border border-orange-500 hover:bg-orange-500/20 rounded-full text-white font-bold transition-all text-sm sm:text-base tracking-wide" data-plan="Starter" data-price="₹3,999">Choose Starter</button>
+      </div>
+      
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border-2 border-orange-500 relative transform sm:scale-105 glow-orange shadow-2xl shadow-orange-500/20 z-10">
+       <div class="absolute -top-4 sm:-top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-500 to-yellow-500 px-4 sm:px-6 py-1 sm:py-2 rounded-full text-white text-xs sm:text-sm font-bold whitespace-nowrap shadow-lg shadow-orange-500/30">
         Most Popular
        </div>
-       <div class="text-center mb-8">
+       <div class="text-center mb-8 pt-2">
         <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Business</h3>
         <p class="text-slate-400 mb-6 text-sm">For growing companies</p>
         <div class="flex items-baseline justify-center gap-2"><span class="text-4xl sm:text-5xl font-extrabold gradient-text">₹6,999</span>
         </div>
-        <p class="text-orange-400 text-xs sm:text-sm mt-2">One-time payment</p>
+        <p class="text-orange-400 text-xs sm:text-sm font-semibold mt-2">One-time payment</p>
        </div>
-       <ul class="space-y-3 mb-8 text-sm">
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> 15 Pages Website</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Premium Design</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Advanced SEO</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> WhatsApp Integration</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> 1 Month Support</li>
-       </ul><button class="pricing-btn w-full py-3 sm:py-4 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full text-white font-bold hover:opacity-90 transition-opacity text-sm sm:text-base" data-plan="Business" data-price="₹6,999">Choose Business</button>
-      </div><!-- E-Commerce -->
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20 hover:border-orange-500/50 transition-all duration-300">
+       <ul class="space-y-4 mb-8 text-sm font-medium">
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> 15 Pages Website</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Premium Design</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Advanced SEO</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> WhatsApp Integration</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> 1 Month Support</li>
+       </ul>
+       <button class="pricing-btn w-full py-4 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full text-white font-bold hover:scale-[1.02] transition-transform text-sm sm:text-base shadow-lg shadow-orange-500/25 tracking-wide" data-plan="Business" data-price="₹6,999">Choose Business</button>
+      </div>
+      
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-lg">
        <div class="text-center mb-8">
         <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">E-Commerce</h3>
         <p class="text-slate-400 mb-6 text-sm">Complete online store</p>
         <div class="flex items-baseline justify-center gap-2"><span class="text-4xl sm:text-5xl font-extrabold text-white">₹12,999</span>
         </div>
-        <p class="text-orange-400 text-xs sm:text-sm mt-2">One-time payment</p>
+        <p class="text-orange-400 text-xs sm:text-sm font-semibold mt-2">One-time payment</p>
        </div>
-       <ul class="space-y-3 mb-8 text-sm">
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Unlimited Products</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Payment Gateway</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Inventory System</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> Shipping Integration</li>
-        <li class="flex items-center gap-3 text-slate-300">
-         <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-         </svg> 3 Months Support</li>
-       </ul><button class="pricing-btn w-full py-3 sm:py-4 border-2 border-orange-500/50 hover:border-orange-400 rounded-full text-white font-semibold transition-all text-sm sm:text-base" data-plan="E-Commerce" data-price="₹12,999">Choose E-Commerce</button>
+       <ul class="space-y-4 mb-8 text-sm font-medium">
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Unlimited Products</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Payment Gateway</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Inventory System</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> Shipping Integration</li>
+        <li class="flex items-center gap-3 text-slate-200">
+         <svg class="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg> 3 Months Support</li>
+       </ul>
+       <button class="pricing-btn w-full py-4 border border-orange-500 hover:bg-orange-500/20 rounded-full text-white font-bold transition-all text-sm sm:text-base tracking-wide" data-plan="E-Commerce" data-price="₹12,999">Choose E-Commerce</button>
       </div>
-     </div><!-- Guarantee Badge -->
+     </div>
+     
      <div class="text-center mt-12">
-      <div class="inline-flex items-center gap-3 card-gradient rounded-full px-8 py-4 border border-green-500/30">
-       <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-       </svg><span class="text-green-400 font-semibold">100% Unlimited Revisions</span>
+      <div class="inline-flex items-center gap-3 bg-black/50 backdrop-blur-md rounded-full px-8 py-4 border border-orange-500/50 shadow-[0_0_20px_rgba(249,115,22,0.3)]">
+       <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+       </svg><span class="text-orange-400 font-bold tracking-wide">100% Unlimited Revisions</span>
       </div>
      </div>
     </div>
-   </section><!-- Testimonials -->
-   <section id="work" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+   </section>
+   
+   <section id="work" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-black border-t border-white/5">
     <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-12 sm:mb-16"><span class="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white text-xs sm:text-sm font-semibold mb-4">Client Stories</span>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Trusted by<br><span class="gradient-text">Businesses Nationwide</span></h2>
+     <div class="text-center mb-12 sm:mb-16"><span class="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white text-xs sm:text-sm font-bold uppercase tracking-widest mb-4">Client Stories</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Trusted by<br><span class="gradient-text">Businesses Nationwide</span></h2>
      </div>
      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20">
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-white/10 shadow-lg hover:-translate-y-1 transition-transform">
        <div class="flex items-center gap-1 mb-6">
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
        </div>
-       <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed">"SkyrocketGrowth delivered beyond expectations! Our new website tripled our online inquiries in just 2 months."</p>
+       <p class="text-slate-300 mb-6 text-base leading-relaxed">"SkyrocketGrowth delivered beyond expectations! Our new website tripled our online inquiries in just 2 months."</p>
        <div class="flex items-center gap-4">
-        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-         P
-        </div>
+        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner">P</div>
         <div>
-         <div class="font-semibold text-white text-sm sm:text-base">
-          Priya Sharma
-         </div>
-         <div class="text-xs sm:text-sm text-slate-400">
-          CEO, Delhi Fashion Hub
-         </div>
+         <div class="font-bold text-white text-base">Priya Sharma</div>
+         <div class="text-sm text-orange-400 font-medium">CEO, Delhi Fashion Hub</div>
         </div>
        </div>
       </div>
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20">
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-white/10 shadow-lg hover:-translate-y-1 transition-transform">
        <div class="flex items-center gap-1 mb-6">
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
        </div>
-       <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed">"Affordable, professional, and fast. Our e-commerce store was live in 8 days. Already processed 300+ orders!"</p>
+       <p class="text-slate-300 mb-6 text-base leading-relaxed">"Affordable, professional, and fast. Our e-commerce store was live in 8 days. Already processed 300+ orders!"</p>
        <div class="flex items-center gap-4">
-        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-         R
-        </div>
+        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner">R</div>
         <div>
-         <div class="font-semibold text-white text-sm sm:text-base">
-          Rahul Patel
-         </div>
-         <div class="text-xs sm:text-sm text-slate-400">
-          Owner, Mumbai Organics
-         </div>
+         <div class="font-bold text-white text-base">Rahul Patel</div>
+         <div class="text-sm text-orange-400 font-medium">Owner, Mumbai Organics</div>
         </div>
        </div>
       </div>
-      <div class="card-gradient rounded-3xl p-6 sm:p-8 border border-blue-500/20">
+      <div class="bg-black rounded-3xl p-6 sm:p-8 border border-white/10 shadow-lg hover:-translate-y-1 transition-transform">
        <div class="flex items-center gap-1 mb-6">
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20">
-         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
        </div>
-       <p class="text-slate-300 mb-6 text-sm sm:text-base leading-relaxed">"Best investment for our startup. Modern design, great support, and incredible value for money. Highly recommend!"</p>
+       <p class="text-slate-300 mb-6 text-base leading-relaxed">"Best investment for our startup. Modern design, great support, and incredible value for money. Highly recommend!"</p>
        <div class="flex items-center gap-4">
-        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-         A
-        </div>
+        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner">A</div>
         <div>
-         <div class="font-semibold text-white text-sm sm:text-base">
-          Anjali Singh
-         </div>
-         <div class="text-xs sm:text-sm text-slate-400">
-          Founder, Bangalore Tech Labs
-         </div>
+         <div class="font-bold text-white text-base">Anjali Singh</div>
+         <div class="text-sm text-orange-400 font-medium">Founder, Bangalore Tech Labs</div>
         </div>
        </div>
       </div>
      </div>
     </div>
-   </section><!-- CTA Section -->
-   <section id="contact" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative">
-    <div class="absolute inset-0 opacity-50">
-     <div class="absolute top-20 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
-     <div class="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+   </section>
+   
+   <section id="contact" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative border-t border-white/5 bg-black">
+    <div class="absolute inset-0 opacity-30 pointer-events-none">
+     <div class="absolute top-20 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-orange-500/20 rounded-full blur-[100px]"></div>
+     <div class="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-yellow-500/20 rounded-full blur-[100px]"></div>
     </div>
     <div class="max-w-4xl mx-auto relative z-10">
-     <div class="card-gradient rounded-3xl p-6 sm:p-8 md:p-12 text-center border border-orange-500/30 glow-orange">
-      <div class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-3xl flex items-center justify-center mx-auto mb-6 sm:mb-8">
-       <svg class="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39C21.61 2.39 16.66 .269 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.79 17.45 10.61 17.63 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.14 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
+     <div class="bg-black/60 backdrop-blur-xl rounded-3xl p-6 sm:p-8 md:p-12 text-center border border-orange-500/30 shadow-[0_0_50px_rgba(249,115,22,0.15)]">
+      <div class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-3xl flex items-center justify-center mx-auto mb-6 sm:mb-8 shadow-lg shadow-orange-500/30">
+       <svg class="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39C21.61 2.39 16.66 .269 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.79 17.45 10.61 17.63 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.14 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
        </svg>
       </div>
-      <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 sm:mb-4">Ready to Launch?</h2>
-      <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-10 max-w-2xl mx-auto">Let's build something amazing together. Get your free consultation today.</p>
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-3 sm:mb-4">Ready to Launch?</h2>
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-10 max-w-2xl mx-auto font-medium">Let's build something amazing together. Get your free consultation today.</p>
       <form id="contact-form" class="max-w-lg mx-auto space-y-4">
-       <div><label for="name" class="sr-only">Your Name</label> <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-slate-800/70 border border-blue-500/30 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none transition-all text-white placeholder-slate-400 text-sm sm:text-base">
-       </div>
-       <div><label for="email" class="sr-only">Email Address</label> <input type="email" id="email" name="email" placeholder="Email Address" required class="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-slate-800/70 border border-blue-500/30 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none transition-all text-white placeholder-slate-400 text-sm sm:text-base">
-       </div>
-       <div><label for="phone" class="sr-only">Phone Number</label> <input type="tel" id="phone" name="phone" placeholder="Phone / WhatsApp" required class="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-slate-800/70 border border-blue-500/30 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none transition-all text-white placeholder-slate-400 text-sm sm:text-base">
-       </div><button id="cta-submit" type="submit" class="w-full bg-gradient-to-r from-orange-500 to-yellow-500 px-6 sm:px-8 py-4 sm:py-5 rounded-2xl text-white font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-sm sm:text-base"> <span id="cta-text">Get Started Now</span>
-        <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg></button>
+       <div><label for="name" class="sr-only">Your Name</label> <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-black border border-white/20 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none transition-all text-white placeholder-slate-500 text-sm sm:text-base"></div>
+       <div><label for="email" class="sr-only">Email Address</label> <input type="email" id="email" name="email" placeholder="Email Address" required class="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-black border border-white/20 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none transition-all text-white placeholder-slate-500 text-sm sm:text-base"></div>
+       <div><label for="phone" class="sr-only">Phone Number</label> <input type="tel" id="phone" name="phone" placeholder="Phone / WhatsApp" required class="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-black border border-white/20 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 outline-none transition-all text-white placeholder-slate-500 text-sm sm:text-base"></div>
+       <button id="cta-submit" type="submit" class="w-full bg-gradient-to-r from-orange-500 to-yellow-500 px-6 sm:px-8 py-4 sm:py-5 rounded-2xl text-white font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg shadow-orange-500/20 tracking-wide"> <span id="cta-text">Get Started Now</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+       </button>
       </form>
-      <p class="text-slate-400 text-xs sm:text-sm mt-6 sm:mt-8">✓ Free Consultation • ✓ No Commitment • ✓ 24hr Response Time</p>
+      <p class="text-slate-400 text-xs sm:text-sm mt-6 sm:mt-8 font-semibold">✓ Free Consultation • ✓ No Commitment • ✓ 24hr Response Time</p>
      </div>
     </div>
-   </section><!-- Footer -->
-   <footer class="py-12 px-6 lg:px-8 border-t border-blue-500/20">
+   </section>
+   
+   <footer class="py-12 px-6 lg:px-8 border-t border-white/10 bg-black">
     <div class="max-w-7xl mx-auto">
      <div class="grid md:grid-cols-4 gap-10 mb-12">
       <div>
        <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center">
-         <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39C21.61 2.39 16.66 .269 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.79 17.45 10.61 17.63 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.14 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
+        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/20">
+         <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39C21.61 2.39 16.66 .269 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.79 17.45 10.61 17.63 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.14 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
          </svg>
         </div><span class="text-xl font-bold text-white">Skyrocket<span class="gradient-text">Growth</span></span>
        </div>
-       <p class="text-slate-400 text-sm">Building digital success stories for Indian businesses since 2020.</p>
+       <p class="text-slate-400 text-sm leading-relaxed">Building digital success stories for Indian businesses since 2020.</p>
       </div>
       <nav aria-label="Services">
-       <h4 class="font-semibold text-white mb-4">Services</h4>
-       <ul class="space-y-2 text-sm text-slate-400">
+       <h4 class="font-bold text-white mb-4 uppercase tracking-wider text-sm">Services</h4>
+       <ul class="space-y-3 text-sm text-slate-400 font-medium">
         <li><a href="#services" class="hover:text-orange-400 transition-colors">Website Design</a></li>
         <li><a href="#services" class="hover:text-orange-400 transition-colors">E-Commerce</a></li>
         <li><a href="#services" class="hover:text-orange-400 transition-colors">SEO &amp; Marketing</a></li>
@@ -550,8 +521,8 @@
        </ul>
       </nav>
       <nav aria-label="Company">
-       <h4 class="font-semibold text-white mb-4">Company</h4>
-       <ul class="space-y-2 text-sm text-slate-400">
+       <h4 class="font-bold text-white mb-4 uppercase tracking-wider text-sm">Company</h4>
+       <ul class="space-y-3 text-sm text-slate-400 font-medium">
         <li><a href="#work" class="hover:text-orange-400 transition-colors">Portfolio</a></li>
         <li><a href="#pricing" class="hover:text-orange-400 transition-colors">Pricing</a></li>
         <li><a href="#work" class="hover:text-orange-400 transition-colors">Testimonials</a></li>
@@ -559,26 +530,20 @@
        </ul>
       </nav>
       <div>
-       <h4 class="font-semibold text-white mb-4">Contact</h4>
-       <ul class="space-y-2 text-sm text-slate-400">
-        <li class="flex items-center gap-2">
-         <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-         </svg> hello@skyrocket.in</li>
-        <li class="flex items-center gap-2">
-         <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-         </svg> +91 94993 79179</li>
-        <li class="flex items-center gap-2">
-         <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-         </svg> India</li>
+       <h4 class="font-bold text-white mb-4 uppercase tracking-wider text-sm">Contact</h4>
+       <ul class="space-y-3 text-sm text-slate-400 font-medium">
+        <li class="flex items-center gap-3">
+         <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> hello@skyrocket.in</li>
+        <li class="flex items-center gap-3">
+         <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg> +91 94993 79179</li>
+        <li class="flex items-center gap-3">
+         <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg> India</li>
        </ul>
       </div>
      </div>
-     <div class="border-t border-blue-500/20 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400">
+     <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 font-medium">
       <p>© 2024 SkyrocketGrowth. All rights reserved.</p>
-      <div class="flex items-center gap-4"><a href="#" class="hover:text-orange-400 transition-colors" aria-label="Facebook">Facebook</a> <a href="https://www.instagram.com/skyrocketgrowth.in" target="_blank" rel="noopener noreferrer" class="hover:text-orange-400 transition-colors" aria-label="Instagram">Instagram</a> <a href="#" class="hover:text-orange-400 transition-colors" aria-label="LinkedIn">LinkedIn</a>
+      <div class="flex items-center gap-6"><a href="#" class="hover:text-orange-400 transition-colors" aria-label="Facebook">Facebook</a> <a href="https://www.instagram.com/skyrocketgrowth.in" target="_blank" rel="noopener noreferrer" class="hover:text-orange-400 transition-colors" aria-label="Instagram">Instagram</a> <a href="#" class="hover:text-orange-400 transition-colors" aria-label="LinkedIn">LinkedIn</a>
       </div>
      </div>
     </div>
@@ -599,7 +564,6 @@
     async function onConfigChange(newConfig) {
       config = { ...config, ...newConfig };
       
-      // Update text content
       const heroTitle = document.getElementById('hero-title');
       if (heroTitle) {
         const title = config.hero_title || defaultConfig.hero_title;
@@ -663,7 +627,6 @@
       ]);
     }
 
-    // Mobile menu
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -679,7 +642,6 @@
       });
     }
 
-    // Contact form with WhatsApp
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
       contactForm.addEventListener('submit', (e) => {
@@ -704,23 +666,17 @@
           return;
         }
         
-        // Get WhatsApp number from config
         const whatsappNumber = config.whatsapp_number || defaultConfig.whatsapp_number;
-        
-        // Create WhatsApp message
         const message = `Hi! I'm interested in your services.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Plan I'm interested in:* ${encodeURIComponent(selectedPlan)}`;
         
-        // Open WhatsApp in new tab
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         
-        // Show success message
         const btn = document.getElementById('cta-submit');
         const span = btn.querySelector('span');
         const originalText = span.textContent;
         span.textContent = '✓ Opening WhatsApp...';
         
-        // Reset form
         contactForm.reset();
         
         setTimeout(() => {
@@ -729,19 +685,15 @@
       });
     }
 
-    // Track selected plan
     let selectedPlan = 'Not selected';
     
-    // Pricing buttons - scroll to contact form
     document.querySelectorAll('.pricing-btn').forEach(button => {
       button.addEventListener('click', function() {
         const plan = this.getAttribute('data-plan');
         const price = this.getAttribute('data-price');
         
-        // Store selected plan
         selectedPlan = `${plan} (${price})`;
         
-        // Scroll to contact form
         const contactSection = document.getElementById('contact');
         if (contactSection) {
           contactSection.scrollIntoView({
@@ -750,7 +702,6 @@
           });
         }
         
-        // Show confirmation message
         setTimeout(() => {
           const btn = document.getElementById('cta-submit');
           const span = btn.querySelector('span');
@@ -764,7 +715,6 @@
       });
     });
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -778,7 +728,6 @@
       });
     });
 
-    // Initialize SDK
     if (window.elementSdk) {
       window.elementSdk.init({
         defaultConfig,
@@ -788,5 +737,5 @@
       });
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c6f3fc30406595d',t:'MTc2OTkyNTg0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ </body>
 </html>
